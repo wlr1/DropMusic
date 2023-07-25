@@ -1,63 +1,59 @@
-import React from 'react';
+import { FaPlay, FaPause, FaRedoAlt } from 'react-icons/fa';
 
 const MusicPlayer = () => {
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-4">Simple Music Player</h1>
-
-      <div className="w-64 rounded-lg shadow-md p-4">
-        <div className="flex items-center justify-center mb-4">
+    <div
+      className="flex justify-center items-center h-screen bg-gradient-to-br from-purple-900 to-purple-700 relative"
+      style={{
+        backgroundImage:
+          "url('https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Aesthetic-Wallpaper-HD-City-Night.jpg')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="absolute inset-0 bg-opacity-60 backdrop-filter backdrop-blur-lg"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-lg shadow-lg">
+        {/*Music Player Image*/}
+        <div className="flex items-center  w-[333px] h-[386] justify-center mb-6">
           <img
-            src="path/to/album-artwork.jpg"
-            alt="Album Artwork"
-            className="w-32 h-32 rounded-lg shadow-md"
+            className="h-[386] w-[333px]"
+            src="https://i.pinimg.com/564x/dc/15/c3/dc15c388c26650520fb3fac014a4eb63.jpg"
+            alt="Track Image"
           />
         </div>
-        <h2 className="text-xl font-bold mb-2">Song Title</h2>
-        <p className="text-gray-600">Artist Name</p>
-
-        <audio controls className="w-full mt-4">
-          <source src="path/to/audio-file.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
-
-        <div className="flex justify-center mt-4">
-          <button className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md">
-            Play
+        {/* Track Title */}
+        <div className="flex items-center justify-start mb-6">
+          <span className="text-white font-semibold text-2xl">Track Title</span>
+        </div>
+        {/* Music Player Controls */}
+        <div className="flex items-center justify-center space-x-6 mb-6">
+          <button className="p-2 bg-opacity-80 bg-white rounded-lg shadow-md hover:scale-110 transition-transform">
+            <FaRedoAlt className="text-white" />
           </button>
-          <button className="ml-4 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-md">
-            Pause
+          <button className="p-4 bg-opacity-80 bg-white rounded-full shadow-md hover:scale-110 transition-transform">
+            <FaPlay className="text-white text-3xl" />
+          </button>
+          <button className="p-2 bg-opacity-80 bg-white rounded-lg shadow-md hover:scale-110 transition-transform">
+            <FaPause className="text-white" />
           </button>
         </div>
-
-        <div className="mt-4">
-          <label htmlFor="volume" className="block">
-            Volume
-          </label>
+        {/* Time Slider */}
+        <div className="flex items-center justify-center space-x-2 text-white mb-2">
+          <span>0:00</span>
           <input
             type="range"
-            id="volume"
-            name="volume"
-            min="0"
-            max="1"
-            step="0.01"
-            className="w-full"
+            className="w-64 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
           />
+          <span>3:45</span>
         </div>
-
-        <div className="mt-4">
-          <label htmlFor="progress" className="block">
-            Progress
-          </label>
+        {/* Sound Slider */}
+        <div className="flex items-center justify-center space-x-2 text-white">
+          <span>0%</span>
           <input
             type="range"
-            id="progress"
-            name="progress"
-            min="0"
-            max="100"
-            step="1"
-            className="w-full"
+            className="w-64 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
           />
+          <span>100%</span>
         </div>
       </div>
     </div>

@@ -18,12 +18,10 @@ const Drop = () => {
     e.preventDefault();
     setIsDragging(false);
 
-    if (
-      e.dataTransfer &&
-      e.dataTransfer.files &&
-      e.dataTransfer.files.length > 0
-    ) {
-      const file = e.dataTransfer.files[0]; // Get the first file from the dropped files
+    const files = e.dataTransfer?.files;
+
+    if (files && files.length > 0) {
+      const file = files[0]; // Get the first file from the dropped files
       // Do something with the file, e.g., upload or process it
       console.log('File:', file);
     }
@@ -77,8 +75,13 @@ const Drop = () => {
                 borderRadius: '9999px',
               }}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                const file = e.target.files[0];
-                console.log('file: ' + file);
+                const files = e.target?.files;
+
+                if (files && files.length > 0) {
+                  const file = files[0]; // Get the first file from the selected files
+                  // Do something with the file, e.g., upload or process it
+                  console.log('File:', file);
+                }
               }}
             />
           </span>
