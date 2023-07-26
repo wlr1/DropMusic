@@ -3,7 +3,7 @@ import { FaPlay, FaPause, FaRedoAlt } from 'react-icons/fa';
 const MusicPlayer = () => {
   return (
     <div
-      className="flex justify-center items-center h-screen bg-gradient-to-br from-purple-900 to-purple-700 relative"
+      className="flex justify-center items-center h-screen "
       style={{
         backgroundImage:
           "url('https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Aesthetic-Wallpaper-HD-City-Night.jpg')",
@@ -11,8 +11,8 @@ const MusicPlayer = () => {
         backgroundPosition: 'center',
       }}
     >
-      <div className="absolute inset-0 bg-opacity-60 backdrop-filter backdrop-blur-lg"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-lg shadow-lg">
+      <div className="absolute inset-0 bg-opacity-60 backdrop-filter backdrop-blur-xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg">
         {/*Music Player Image*/}
         <div className="flex items-center  w-[333px] h-[386] justify-center mb-6">
           <img
