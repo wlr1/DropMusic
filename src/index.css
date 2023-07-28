@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* https://i.pinimg.com/564x/dc/15/c3/dc15c388c26650520fb3fac014a4eb63.jpg */
-/* https://i.pinimg.com/564x/3c/6b/12/3c6b12452b658a9b7ab62266c423469f.jpg */
-
 body {
   overflow: hidden;
 }

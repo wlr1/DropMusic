@@ -1,8 +1,11 @@
 import { BsCloudUpload } from 'react-icons/bs';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Drop = () => {
+  const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -23,6 +26,8 @@ const Drop = () => {
       const file = files[0];
       if (file.type === 'audio/mpeg' || file.type === 'audio/mp3') {
         console.log('File:', file);
+        setSelectedFile(file);
+        navigate('/music-player');
       } else {
         console.log('Invalid file format. Only MP3 files are allowed.');
       }
@@ -83,6 +88,8 @@ const Drop = () => {
                   const file = files[0];
                   if (file.type === 'audio/mpeg' || file.type === 'audio/mp3') {
                     console.log('File:', file);
+                    setSelectedFile(file);
+                    navigate('/music-player');
                   } else {
                     console.log(
                       'Invalid file format. Only MP3 files are allowed.'
