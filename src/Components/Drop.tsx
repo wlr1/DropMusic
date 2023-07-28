@@ -1,5 +1,5 @@
 import { BsCloudUpload } from 'react-icons/bs';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const Drop = () => {
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -19,11 +19,13 @@ const Drop = () => {
     setIsDragging(false);
 
     const files = e.dataTransfer?.files;
-
     if (files && files.length > 0) {
-      const file = files[0]; // Get the first file from the dropped files
-      // Do something with the file, e.g., upload or process it
-      console.log('File:', file);
+      const file = files[0];
+      if (file.type === 'audio/mpeg' || file.type === 'audio/mp3') {
+        console.log('File:', file);
+      } else {
+        console.log('Invalid file format. Only MP3 files are allowed.');
+      }
     }
   };
 
@@ -78,9 +80,14 @@ const Drop = () => {
                 const files = e.target?.files;
 
                 if (files && files.length > 0) {
-                  const file = files[0]; // Get the first file from the selected files
-                  // Do something with the file, e.g., upload or process it
-                  console.log('File:', file);
+                  const file = files[0];
+                  if (file.type === 'audio/mpeg' || file.type === 'audio/mp3') {
+                    console.log('File:', file);
+                  } else {
+                    console.log(
+                      'Invalid file format. Only MP3 files are allowed.'
+                    );
+                  }
                 }
               }}
             />

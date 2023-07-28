@@ -4,7 +4,7 @@ import MusicPlayer from './Components/MusicPlayer';
 const App = () => {
   return (
     <div>
-      <MusicPlayer />
+      <Drop />
     </div>
   );
 };
