@@ -1,6 +1,13 @@
 import { FaPlay, FaPause, FaRedoAlt } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
 
 const MusicPlayer = () => {
+  const location = useLocation();
+  const selectedFile = location.state?.selectedFile || null;
+
+  //Track title
+  const trackTitle = selectedFile ? selectedFile.name : 'No track selected';
+
   return (
     <div
       className="flex justify-center items-center h-screen "
@@ -22,8 +29,15 @@ const MusicPlayer = () => {
           />
         </div>
         {/* Track Title */}
-        <div className="flex items-center justify-start mb-6">
-          <span className="text-white font-semibold text-2xl">Track Title</span>
+        <div className="flex items-center justify-start mb-6 overflow-hidden w-[333px]">
+          <span
+            className="text-white font-semibold text-2xl animate-marquee min-w-[700px]"
+            style={{
+              animation: 'marquee 10s linear infinite', // Apply the animation
+            }}
+          >
+            {trackTitle}
+          </span>
         </div>
         {/* Music Player Controls */}
         <div className="flex items-center justify-center space-x-6 mb-6">
