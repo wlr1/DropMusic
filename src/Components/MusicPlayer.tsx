@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaPlay, FaPause, FaRedoAlt } from 'react-icons/fa';
+import { BiChevronLeft } from 'react-icons/bi';
 import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const MusicPlayer = () => {
   const location = useLocation();
@@ -14,6 +16,7 @@ const MusicPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
+  // Update current time and duration on audio load
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.addEventListener('loadeddata', () => {
@@ -74,10 +77,20 @@ const MusicPlayer = () => {
         backgroundPosition: 'center',
       }}
     >
-      <div className="absolute inset-0 bg-opacity-60 backdrop-filter backdrop-blur-xl"></div>
+      <div className="absolute inset-0 bg-opacity-60 backdrop-filter backdrop-blur-xl">
+        <div className=" w-[250px] h-screen bg-black bg-opacity-0 hover:bg-opacity-30 ">
+          <div className="flex justify-center items-center h-full">
+            <Link to="/">
+              <button className="py-[444px] px-[95px] relative hover:animate-moveLeft">
+                <BiChevronLeft className="text-white " size={66} />
+              </button>
+            </Link>
+          </div>
+        </div>
+      </div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg">
         {/*Music Player Image*/}
-        <div className="flex items-center  w-[333px] h-[386] justify-center mb-6">
+        <div className="flex items-center  w-[344px] h-[386] justify-center mb-6">
           <img
             className="h-[386] w-[333px]"
             src="https://i.pinimg.com/564x/dc/15/c3/dc15c388c26650520fb3fac014a4eb63.jpg"
