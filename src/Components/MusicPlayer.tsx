@@ -16,6 +16,16 @@ const MusicPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
+  //sound slider
+  const [volume, setVolume] = useState(50);
+
+  // Update the volume of the audio
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = volume / 100;
+    }
+  }, [volume]);
+
   // Update current time and duration on audio load
   useEffect(() => {
     if (audioRef.current) {
@@ -115,13 +125,13 @@ const MusicPlayer = () => {
             onClick={handlePlayPause}
           >
             {isPlaying ? (
-              <FaPause className="text-white" />
+              <FaPause className="text-neutral-600 text-xl" />
             ) : (
               <FaPlay className="text-white text-3xl" />
             )}
           </button>
           <button className="p-4 bg-opacity-80 bg-white rounded-full shadow-md hover:scale-110 transition-transform">
-            <FaRedoAlt className="text-white" />
+            <FaRedoAlt className="text-white text-xl" />
           </button>
         </div>
         {/* Time Slider */}
@@ -147,6 +157,10 @@ const MusicPlayer = () => {
           <input
             type="range"
             className="w-64 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
+            min={0}
+            max={100}
+            value={volume}
+            onChange={(e) => setVolume(Number(e.target.value))}
           />
           <span>100%</span>
         </div>
