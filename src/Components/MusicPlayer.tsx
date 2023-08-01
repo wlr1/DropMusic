@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { FaPlay, FaPause, FaRedoAlt } from 'react-icons/fa';
+import { FaPlay, FaPause, FaRedoAlt, FaRedo } from 'react-icons/fa';
 import { BiChevronLeft } from 'react-icons/bi';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -18,6 +18,34 @@ const MusicPlayer = () => {
 
   //sound slider
   const [volume, setVolume] = useState(50);
+
+  //repeat button
+  const [repeatMode, setRepeatMode] = useState('no-repeat');
+
+  //toggle repeat mode
+  const handleRepeat = () => {
+    if (audioRef.current) {
+      switch (repeatMode) {
+        case 'no-repeat':
+          audioRef.current.loop = false;
+          break;
+        case 'repeat-one':
+          audioRef.current.loop = true;
+          break;
+        case 'repeat-all':
+          audioRef.current.loop = false;
+          break;
+        default:
+          audioRef.current.loop = false;
+          break;
+      }
+    }
+  };
+
+  //Update the repeat behavior when repeatMode changes
+  useEffect(() => {
+    handleRepeat();
+  }, [repeatMode]);
 
   // Update the volume of the audio
   useEffect(() => {
@@ -130,8 +158,27 @@ const MusicPlayer = () => {
               <FaPlay className="text-white text-3xl" />
             )}
           </button>
-          <button className="p-4 bg-opacity-80 bg-white rounded-full shadow-md hover:scale-110 transition-transform">
-            <FaRedoAlt className="text-white text-xl" />
+          <button
+            className="p-4 bg-opacity-80 bg-white rounded-full shadow-md hover:scale-110 transition-transform"
+            onClick={() =>
+              setRepeatMode((prevMode) =>
+                prevMode === 'repeat-all'
+                  ? 'no-repeat'
+                  : prevMode === 'no-repeat'
+                  ? 'repeat-one'
+                  : 'repeat-all'
+              )
+            }
+          >
+            {repeatMode === 'no-repeat' && (
+              <FaRedoAlt className="text-white text-xl " />
+            )}
+            {repeatMode === 'repeat-one' && (
+              <FaRedoAlt className="text-neutral-500 text-2xl" />
+            )}
+            {repeatMode === 'repeat-all' && (
+              <FaRedo className="text-neutral-800 text-3xl" />
+            )}
           </button>
         </div>
         {/* Time Slider */}
