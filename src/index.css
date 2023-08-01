@@ -18,6 +18,14 @@
   animation: moveLeft 0.5s ease forwards;
 }
 
+.button-scale {
+  transition: transform 0.2s ease;
+}
+
+.button-scale:hover {
+  transform: scale(1.1);
+}
+
 body {
   overflow: hidden;
 }

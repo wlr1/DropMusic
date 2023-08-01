@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { FaPlay, FaPause, FaRedoAlt, FaRedo } from 'react-icons/fa';
+import { TiMediaPause } from 'react-icons/ti';
+import { IoPlay } from 'react-icons/io5';
+import { PiRepeatLight, PiRepeatOnceLight, PiRepeatOnce } from 'react-icons/pi';
 import { BiChevronLeft } from 'react-icons/bi';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -149,17 +151,17 @@ const MusicPlayer = () => {
         {/* Music Player Controls */}
         <div className="flex items-center justify-center space-x-6 mb-6">
           <button
-            className="p-2 bg-opacity-80 bg-white rounded-lg shadow-md hover:scale-110 transition-transform"
+            className="p-2 bg-opacity-80 bg-white rounded-lg shadow-md button-scale"
             onClick={handlePlayPause}
           >
             {isPlaying ? (
-              <FaPause className="text-neutral-600 text-xl" />
+              <TiMediaPause size={33} className="text-neutral-600 " />
             ) : (
-              <FaPlay className="text-white text-3xl" />
+              <IoPlay size={33} className="text-white" />
             )}
           </button>
           <button
-            className="p-4 bg-opacity-80 bg-white rounded-full shadow-md hover:scale-110 transition-transform"
+            className="p-4 bg-opacity-80 bg-white rounded-full shadow-md button-scale"
             onClick={() =>
               setRepeatMode((prevMode) =>
                 prevMode === 'repeat-all'
@@ -171,13 +173,13 @@ const MusicPlayer = () => {
             }
           >
             {repeatMode === 'no-repeat' && (
-              <FaRedoAlt className="text-white text-xl " />
+              <PiRepeatLight size={23} className="text-white  " />
             )}
             {repeatMode === 'repeat-one' && (
-              <FaRedoAlt className="text-neutral-500 text-2xl" />
+              <PiRepeatOnceLight size={23} className="text-neutral-600 " />
             )}
             {repeatMode === 'repeat-all' && (
-              <FaRedo className="text-neutral-800 text-3xl" />
+              <PiRepeatOnce size={23} className="text-neutral-800 " />
             )}
           </button>
         </div>
@@ -200,7 +202,7 @@ const MusicPlayer = () => {
         </div>
         {/* Sound Slider */}
         <div className="flex items-center justify-center space-x-2 text-white">
-          <span>0%</span>
+          <span>0% </span>
           <input
             type="range"
             className="w-64 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
