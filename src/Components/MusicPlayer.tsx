@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { TiMediaPause } from 'react-icons/ti';
 import { IoPlay } from 'react-icons/io5';
-import { PiRepeatLight, PiRepeatOnceLight, PiRepeatOnce } from 'react-icons/pi';
-import { BiChevronLeft } from 'react-icons/bi';
+import { PiRepeatLight, PiRepeatOnceLight } from 'react-icons/pi';
+
 import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
+import PlayerImage from './PlayerImage/PlayerImage';
+import BackButton from './BackButton';
 
 const MusicPlayer = () => {
   const location = useLocation();
@@ -118,25 +120,11 @@ const MusicPlayer = () => {
       }}
     >
       <div className="absolute inset-0 bg-opacity-60 backdrop-filter backdrop-blur-xl">
-        <div className=" w-[250px] h-screen bg-black bg-opacity-0 hover:bg-opacity-30 ">
-          <div className="flex justify-center items-center h-full">
-            <Link to="/">
-              <button className="py-[444px] px-[95px] relative hover:animate-moveLeft">
-                <BiChevronLeft className="text-white " size={66} />
-              </button>
-            </Link>
-          </div>
-        </div>
+        <BackButton />
       </div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg">
         {/*Music Player Image*/}
-        <div className="flex items-center  w-[344px] h-[386] justify-center mb-6">
-          <img
-            className="h-[386] w-[333px]"
-            src="https://i.pinimg.com/564x/dc/15/c3/dc15c388c26650520fb3fac014a4eb63.jpg"
-            alt="Track Image"
-          />
-        </div>
+        <PlayerImage />
         {/* Track Title */}
         <div className="flex items-center justify-start mb-6 overflow-hidden w-[333px]">
           <span
@@ -179,7 +167,7 @@ const MusicPlayer = () => {
               <PiRepeatOnceLight size={23} className="text-neutral-600 " />
             )}
             {repeatMode === 'repeat-all' && (
-              <PiRepeatOnce size={23} className="text-neutral-800 " />
+              <PiRepeatLight size={23} className="text-neutral-900 " />
             )}
           </button>
         </div>
