@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { TiMediaPause } from 'react-icons/ti';
 import { IoPlay } from 'react-icons/io5';
-import { PiRepeatLight, PiRepeatOnceLight } from 'react-icons/pi';
 
 import { useLocation } from 'react-router-dom';
 
 import PlayerImage from './PlayerImage/PlayerImage';
 import BackButton from './BackButton';
+import PlayerRepeatButton from './PlayerRepeatButton/PlayerRepeatButton';
+import PlayerTrackTitle from './PlayerTrackTitle/PlayerTrackTitle';
 
 const MusicPlayer = () => {
   const location = useLocation();
@@ -22,34 +23,6 @@ const MusicPlayer = () => {
 
   //sound slider
   const [volume, setVolume] = useState(50);
-
-  //repeat button
-  const [repeatMode, setRepeatMode] = useState('no-repeat');
-
-  //toggle repeat mode
-  const handleRepeat = () => {
-    if (audioRef.current) {
-      switch (repeatMode) {
-        case 'no-repeat':
-          audioRef.current.loop = false;
-          break;
-        case 'repeat-one':
-          audioRef.current.loop = true;
-          break;
-        case 'repeat-all':
-          audioRef.current.loop = false;
-          break;
-        default:
-          audioRef.current.loop = false;
-          break;
-      }
-    }
-  };
-
-  //Update the repeat behavior when repeatMode changes
-  useEffect(() => {
-    handleRepeat();
-  }, [repeatMode]);
 
   // Update the volume of the audio
   useEffect(() => {
@@ -126,16 +99,7 @@ const MusicPlayer = () => {
         {/*Music Player Image*/}
         <PlayerImage />
         {/* Track Title */}
-        <div className="flex items-center justify-start mb-6 overflow-hidden w-[333px]">
-          <span
-            className="text-white font-semibold text-2xl animate-marquee min-w-[700px]"
-            style={{
-              animation: 'marquee 15s linear infinite', // Apply the animation
-            }}
-          >
-            {trackTitle}
-          </span>
-        </div>
+        <PlayerTrackTitle trackTitle={trackTitle} />
         {/* Music Player Controls */}
         <div className="flex items-center justify-center space-x-6 mb-6">
           <button
@@ -148,28 +112,7 @@ const MusicPlayer = () => {
               <IoPlay size={33} className="text-white" />
             )}
           </button>
-          <button
-            className="p-4 bg-opacity-80 bg-white rounded-full shadow-md button-scale"
-            onClick={() =>
-              setRepeatMode((prevMode) =>
-                prevMode === 'repeat-all'
-                  ? 'no-repeat'
-                  : prevMode === 'no-repeat'
-                  ? 'repeat-one'
-                  : 'repeat-all'
-              )
-            }
-          >
-            {repeatMode === 'no-repeat' && (
-              <PiRepeatLight size={23} className="text-white  " />
-            )}
-            {repeatMode === 'repeat-one' && (
-              <PiRepeatOnceLight size={23} className="text-neutral-600 " />
-            )}
-            {repeatMode === 'repeat-all' && (
-              <PiRepeatLight size={23} className="text-neutral-900 " />
-            )}
-          </button>
+          <PlayerRepeatButton audioRef={audioRef} />
         </div>
         {/* Time Slider */}
         <div className="flex items-center justify-center space-x-2 text-white mb-2">
