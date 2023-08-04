@@ -1,10 +1,13 @@
 import React from 'react';
 
 interface TitleProps {
-  trackTitle: string;
+  selectedFile: File | null;
 }
 
-const PlayerTrackTitle: React.FC<TitleProps> = ({ trackTitle }) => {
+const PlayerTrackTitle: React.FC<TitleProps> = ({ selectedFile }) => {
+  //Track title
+  const trackTitle = selectedFile ? selectedFile.name : 'No track selected';
+
   return (
     <div className="flex items-center justify-start mb-6 overflow-hidden w-[333px]">
       <span

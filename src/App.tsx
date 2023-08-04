@@ -1,12 +1,6 @@
 import Drop from './Components/Drop';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
-import React from 'react';
-import MusicPlayer from './Components/MusicPlayer';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MusicPlayer from './Components/MusicPlayer/MusicPlayer';
 
 const App = () => {
   return (
