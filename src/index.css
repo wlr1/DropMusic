@@ -26,6 +26,23 @@
   transform: scale(1.1);
 }
 
+/* button pressed */
+@keyframes buttonPress {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-button-press {
+  animation: buttonPress 0.2s ease;
+}
+
 body {
   overflow: hidden;
 }

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { VscSettings } from 'react-icons/vsc';
+import AnotherTrackMenu from './AnotherTrackMenu/AnotherTrackMenu';
 
 const MusicPlayerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,23 +10,19 @@ const MusicPlayerMenu = () => {
   };
 
   return (
-    <div className="absolute right-0 inline-block text-left">
+    <div className="absolute right-0 ">
       <button
-        className="bg-gray-800 text-white font-semibold px-4 py-2 rounded-lg focus:outline-none"
+        className=" text-white font-semibold px-4 py-2 my-2 mx-2 rounded-lg button-scale"
         onClick={toggleDropMenu}
       >
-        Open Dropdown
+        <VscSettings size={33} />
       </button>
       <div
-        className={`absolute z-10 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg ${
+        className={`absolute right-0 z-10 mt-2 w-[554px] h-[466px]  bg-opacity-60 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl ${
           isOpen ? '' : 'hidden'
         } `}
       >
-        <ul className="py-2">
-          <li className="hover:bg-gray-100 px-4 py-2">Option 1</li>
-          <li className="hover:bg-gray-100 px-4 py-2">Option 2</li>
-          <li className="hover:bg-gray-100 px-4 py-2">Option 3</li>
-        </ul>
+        <AnotherTrackMenu />
       </div>
     </div>
   );
