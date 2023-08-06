@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { VscSettings } from 'react-icons/vsc';
-import AnotherTrackMenu from './AnotherTrackMenu/AnotherTrackMenu';
+import ButtonsMenu from './ButtonsMenu/ButtonsMenu';
+import BlurSliderMenu from './BlurSliderMenu/BlurSliderMenu';
+import TitleSpeedMenu from './TitleSpeedMenu/TitleSpeedMenu';
 
 const MusicPlayerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,11 +20,13 @@ const MusicPlayerMenu = () => {
         <VscSettings size={33} />
       </button>
       <div
-        className={`absolute right-0 z-10 mt-2 w-[554px] h-[466px]  bg-opacity-60 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl ${
+        className={`absolute  right-0 z-10 mt-2 w-[554px] h-[466px]  bg-opacity-60 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl ${
           isOpen ? '' : 'hidden'
         } `}
       >
-        <AnotherTrackMenu />
+        <BlurSliderMenu />
+        <TitleSpeedMenu />
+        <ButtonsMenu />
       </div>
     </div>
   );
