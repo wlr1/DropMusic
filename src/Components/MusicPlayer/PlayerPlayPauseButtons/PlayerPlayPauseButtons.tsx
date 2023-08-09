@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { TiMediaPause } from 'react-icons/ti';
 import { IoPlay } from 'react-icons/io5';
+import { RootState } from '../../../redux/store';
+import { togglePlayPause } from '../../../redux/Slices/PlayerSlice';
 
 interface PlayPauseButtonProps {
   audioRef: React.RefObject<HTMLAudioElement>;
@@ -11,8 +14,8 @@ const PlayerPlayPauseButtons: React.FC<PlayPauseButtonProps> = ({
   audioRef,
   selectedFile,
 }) => {
-  // Set up state for audio playback
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const isPlaying = useSelector((state: RootState) => state.player.isPlaying);
 
   //play audio
   useEffect(() => {
@@ -31,10 +34,10 @@ const PlayerPlayPauseButtons: React.FC<PlayPauseButtonProps> = ({
     } else {
       audioRef.current.play().catch((error) => {
         console.error('Error while playing music:', error);
-        setIsPlaying(false);
+        dispatch(togglePlayPause());
       });
     }
-    setIsPlaying(!isPlaying);
+    dispatch(togglePlayPause());
   };
 
   return (

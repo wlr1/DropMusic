@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { PiRepeatLight, PiRepeatOnceLight } from 'react-icons/pi';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
+import { setRepeatMode } from '../../../redux/Slices/PlayerSlice';
 
 interface RepeatButtonProps {
   audioRef: React.RefObject<HTMLAudioElement>;
 }
 
 const PlayerRepeatButton: React.FC<RepeatButtonProps> = ({ audioRef }) => {
-  //repeat button
-  const [repeatMode, setRepeatMode] = useState('no-repeat');
+  const dispatch = useDispatch();
+  const repeatMode = useSelector((state: RootState) => state.player.repeatMode);
 
   //toggle repeat mode
   const handleRepeat = () => {
@@ -38,12 +41,14 @@ const PlayerRepeatButton: React.FC<RepeatButtonProps> = ({ audioRef }) => {
     <button
       className="p-4 bg-opacity-80 bg-white rounded-full shadow-md button-scale"
       onClick={() =>
-        setRepeatMode((prevMode) =>
-          prevMode === 'repeat-all'
-            ? 'no-repeat'
-            : prevMode === 'no-repeat'
-            ? 'repeat-one'
-            : 'repeat-all'
+        dispatch(
+          setRepeatMode(
+            repeatMode === 'repeat-all'
+              ? 'no-repeat'
+              : repeatMode === 'no-repeat'
+              ? 'repeat-one'
+              : 'repeat-all'
+          )
         )
       }
     >
