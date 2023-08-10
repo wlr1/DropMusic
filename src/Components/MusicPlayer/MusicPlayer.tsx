@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import PlayerImage from './PlayerImage/PlayerImage';
@@ -10,9 +10,15 @@ import PlayerTimeSlider from './PlayerTimeSlider/PlayerTimeSlider';
 import PlayerVolumeSlider from './PlayerVolumeSlider/PlayerVolumeSlider';
 import MusicPlayerMenu from '../MusicPlayerMenu/MusicPlayerMenu';
 
+// url(https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Aesthetic-Wallpaper-HD-City-Night.jpg)
+
 const MusicPlayer = () => {
   const location = useLocation();
   const selectedFile = location.state?.selectedFile || null;
+
+  const [bgImage, setBgImage] = useState<string>(
+    `url(https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Aesthetic-Wallpaper-HD-City-Night.jpg)`
+  );
 
   // Set up state for audio playback
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -25,14 +31,13 @@ const MusicPlayer = () => {
     <div
       className="flex justify-center items-center h-screen "
       style={{
-        backgroundImage:
-          "url('https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Aesthetic-Wallpaper-HD-City-Night.jpg')",
+        backgroundImage: bgImage,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
       <div className="absolute inset-0 bg-opacity-60 backdrop-filter backdrop-blur-xl">
-        <MusicPlayerMenu />
+        <MusicPlayerMenu setBgImage={setBgImage} />
         <BackButton />
       </div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg">

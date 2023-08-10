@@ -34,7 +34,9 @@ const Drop = () => {
       if (file.type === 'audio/mpeg' || file.type === 'audio/mp3') {
         console.log('File:', file);
         dispatch(setSelectedFile(file));
-        navigate('/music-player');
+        navigate('/music-player', {
+          state: { selectedFile: file },
+        });
       } else {
         console.log('Invalid file format. Only MP3 files are allowed.');
       }

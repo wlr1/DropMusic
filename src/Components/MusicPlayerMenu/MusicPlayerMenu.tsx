@@ -4,7 +4,11 @@ import ButtonsMenu from './ButtonsMenu/ButtonsMenu';
 import BlurSliderMenu from './BlurSliderMenu/BlurSliderMenu';
 import TitleSpeedMenu from './TitleSpeedMenu/TitleSpeedMenu';
 
-const MusicPlayerMenu = () => {
+interface MusicPlayerMenuProps {
+  setBgImage: (image: string) => void;
+}
+
+const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({ setBgImage }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropMenu = () => {
@@ -26,7 +30,7 @@ const MusicPlayerMenu = () => {
       >
         <BlurSliderMenu />
         <TitleSpeedMenu />
-        <ButtonsMenu />
+        <ButtonsMenu setBgImage={setBgImage} />
       </div>
     </div>
   );

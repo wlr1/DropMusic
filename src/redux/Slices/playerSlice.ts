@@ -10,16 +10,12 @@ const playerSlice = createSlice({
     togglePlayPause: (state) => {
       state.isPlaying = !state.isPlaying;
     },
-    setPlayingState: (state, action) => {
-      state.isPlaying = action.payload;
-    },
     setRepeatMode: (state, action) => {
       state.repeatMode = action.payload;
     },
   },
 });
 
-export const { togglePlayPause, setPlayingState, setRepeatMode } =
-  playerSlice.actions;
+export const { togglePlayPause, setRepeatMode } = playerSlice.actions;
 
 export default playerSlice.reducer;
