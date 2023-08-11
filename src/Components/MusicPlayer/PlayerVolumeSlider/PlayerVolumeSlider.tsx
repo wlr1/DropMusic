@@ -22,7 +22,6 @@ const PlayerVolumeSlider: React.FC<VolumeSliderProps> = ({ audioRef }) => {
       <div className="w-full">
         <Slider
           min={0}
-          max={100}
           value={volume}
           trackStyle={{ backgroundColor: '#fffeff', height: 7 }}
           handleStyle={{
@@ -30,9 +29,11 @@ const PlayerVolumeSlider: React.FC<VolumeSliderProps> = ({ audioRef }) => {
             height: 15,
             width: 15,
             opacity: 10,
-            lightingColor: 'red',
           }}
-          railStyle={{ backgroundColor: '#202124', height: 7, opacity: 5 }}
+          activeDotStyle={{
+            borderColor: 'red',
+          }}
+          railStyle={{ backgroundColor: '#202124', height: 7 }}
           onChange={(value) => setVolume(Number(value))}
           className=""
         />

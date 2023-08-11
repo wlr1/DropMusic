@@ -1,6 +1,14 @@
 import React from 'react';
 
-const BlurSliderMenu = () => {
+interface BlurSliderMenuProps {
+  blurOpacity: number;
+  setBlurOpacity: (opacity: number) => void;
+}
+
+const BlurSliderMenu: React.FC<BlurSliderMenuProps> = ({
+  blurOpacity,
+  setBlurOpacity,
+}) => {
   return (
     <div className="flex mt-6">
       <h2 className="text-white text-[22px] mr-6 ml-3">Blur opacity: </h2>
@@ -11,8 +19,8 @@ const BlurSliderMenu = () => {
           className="w-64 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
           min="0"
           max="100"
-          value="50"
-          readOnly
+          value={blurOpacity}
+          onChange={(e) => setBlurOpacity(Number(e.target.value))}
         />
         <span>100%</span>
       </div>

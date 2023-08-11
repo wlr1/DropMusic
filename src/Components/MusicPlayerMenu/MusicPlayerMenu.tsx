@@ -6,9 +6,15 @@ import TitleSpeedMenu from './TitleSpeedMenu/TitleSpeedMenu';
 
 interface MusicPlayerMenuProps {
   setBgImage: (image: string) => void;
+  blurOpacity: number;
+  setBlurOpacity: (opacity: number) => void;
 }
 
-const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({ setBgImage }) => {
+const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
+  setBgImage,
+  blurOpacity,
+  setBlurOpacity,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropMenu = () => {
@@ -28,7 +34,10 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({ setBgImage }) => {
           isOpen ? '' : 'hidden'
         } `}
       >
-        <BlurSliderMenu />
+        <BlurSliderMenu
+          blurOpacity={blurOpacity}
+          setBlurOpacity={setBlurOpacity}
+        />
         <TitleSpeedMenu />
         <ButtonsMenu setBgImage={setBgImage} />
       </div>
