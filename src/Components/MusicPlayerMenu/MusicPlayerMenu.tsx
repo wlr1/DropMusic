@@ -8,12 +8,16 @@ interface MusicPlayerMenuProps {
   setBgImage: (image: string) => void;
   blurOpacity: number;
   setBlurOpacity: (opacity: number) => void;
+  titleSpeed: number;
+  setTitleSpeed: (speed: number) => void;
 }
 
 const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
   setBgImage,
   blurOpacity,
   setBlurOpacity,
+  titleSpeed,
+  setTitleSpeed,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -38,7 +42,7 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
           blurOpacity={blurOpacity}
           setBlurOpacity={setBlurOpacity}
         />
-        <TitleSpeedMenu />
+        <TitleSpeedMenu titleSpeed={titleSpeed} setTitleSpeed={setTitleSpeed} />
         <ButtonsMenu setBgImage={setBgImage} />
       </div>
     </div>

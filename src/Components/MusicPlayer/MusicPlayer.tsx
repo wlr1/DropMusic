@@ -18,6 +18,9 @@ const MusicPlayer = () => {
     `url(https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Aesthetic-Wallpaper-HD-City-Night.jpg)`
   );
 
+  //track title speed func for musicplayermenu
+  const [titleSpeed, setTitleSpeed] = useState<number>(15);
+
   //blur opacity func for musicplayermenu
   const [blurOpacity, setBlurOpacity] = useState<number>(19);
 
@@ -45,6 +48,8 @@ const MusicPlayer = () => {
           setBgImage={setBgImage}
           blurOpacity={blurOpacity}
           setBlurOpacity={setBlurOpacity}
+          titleSpeed={titleSpeed}
+          setTitleSpeed={setTitleSpeed}
         />
         <BackButton />
       </div>
@@ -54,7 +59,7 @@ const MusicPlayer = () => {
         <PlayerImage />
         {/* Track Title */}
 
-        <PlayerTrackTitle selectedFile={selectedFile} />
+        <PlayerTrackTitle selectedFile={selectedFile} titleSpeed={titleSpeed} />
 
         {/* Music Player Controls */}
         <div className="flex items-center justify-center space-x-6 mb-6">

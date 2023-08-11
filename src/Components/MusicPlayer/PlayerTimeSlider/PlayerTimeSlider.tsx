@@ -54,7 +54,7 @@ const PlayerTimeSlider: React.FC<TimeSliderProps> = ({ audioRef }) => {
           railStyle={{ backgroundColor: '#202124', height: 7, opacity: 5 }}
           className=" "
         />
-        <div className="flex justify-between mt-1 text-gray-500">
+        <div className="flex justify-between mt-1 text-gray-400">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>

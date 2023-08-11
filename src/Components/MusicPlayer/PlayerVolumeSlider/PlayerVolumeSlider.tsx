@@ -38,7 +38,7 @@ const PlayerVolumeSlider: React.FC<VolumeSliderProps> = ({ audioRef }) => {
           className=""
         />
 
-        <div className="flex justify-between mt-1 text-gray-500">
+        <div className="flex justify-between mt-1 text-gray-400">
           <span>0%</span>
           <span>100%</span>
         </div>
