@@ -43,6 +43,16 @@
   animation: buttonPress 0.2s ease;
 }
 
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 body {
   overflow: hidden;
 }

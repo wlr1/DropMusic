@@ -24,7 +24,7 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({ setBgImage }) => {
         <VscSettings size={33} />
       </button>
       <div
-        className={`absolute  right-0 z-10 mt-2 w-[554px] h-[466px]  bg-opacity-60 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl ${
+        className={`absolute  right-0 z-10 mt-2 w-[554px] h-[466px] bg-black bg-opacity-25 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl ${
           isOpen ? '' : 'hidden'
         } `}
       >

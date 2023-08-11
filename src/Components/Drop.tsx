@@ -112,6 +112,15 @@ const Drop = () => {
           </span>
         </label>
       </div>
+      <div className="text-white absolute right-0 bottom-0 mr-11 mb-2">
+        <a
+          href="https://github.com/wlr1"
+          target="_blank"
+          className="text-sm text-gray-500"
+        >
+          github.com/wlr1
+        </a>
+      </div>
     </div>
   );
 };

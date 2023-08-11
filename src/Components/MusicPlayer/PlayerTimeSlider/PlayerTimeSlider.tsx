@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 interface TimeSliderProps {
   audioRef: React.RefObject<HTMLAudioElement>;
 }
 
 const PlayerTimeSlider: React.FC<TimeSliderProps> = ({ audioRef }) => {
-  //time slider
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
-  // Update current time and duration on audio load
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.addEventListener('loadeddata', () => {
@@ -31,21 +31,34 @@ const PlayerTimeSlider: React.FC<TimeSliderProps> = ({ audioRef }) => {
   };
 
   return (
-    <div className="flex items-center justify-center space-x-2 text-white mb-2">
-      <span>{formatTime(currentTime)}</span>
-      <input
-        type="range"
-        className="w-64 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
-        min="0"
-        max={duration}
-        value={currentTime}
-        onChange={(e) => {
-          if (audioRef.current) {
-            audioRef.current.currentTime = parseInt(e.target.value, 10);
-          }
-        }}
-      />
-      <span>{formatTime(duration)}</span>
+    <div className="flex items-center justify-center  mb-2">
+      <div className="w-full">
+        <Slider
+          min={0}
+          max={duration}
+          value={currentTime}
+          onChange={(value: number | number[]) => {
+            if (audioRef.current) {
+              const currentTimeValue = Array.isArray(value) ? value[0] : value;
+              audioRef.current.currentTime = currentTimeValue;
+            }
+          }}
+          trackStyle={{ backgroundColor: '#fffeff', height: 7 }}
+          handleStyle={{
+            borderColor: 'white',
+            height: 15,
+            width: 15,
+            opacity: 10,
+            lightingColor: 'red',
+          }}
+          railStyle={{ backgroundColor: '#202124', height: 7, opacity: 5 }}
+          className=" "
+        />
+        <div className="flex justify-between mt-1 text-gray-500">
+          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime(duration)}</span>
+        </div>
+      </div>
     </div>
   );
 };
