@@ -53,6 +53,28 @@
   }
 }
 
+/* player menu animation */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-open {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.menu-closed {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
 body {
   overflow: hidden;
 }
