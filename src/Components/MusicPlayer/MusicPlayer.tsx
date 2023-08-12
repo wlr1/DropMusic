@@ -9,6 +9,7 @@ import PlayerPlayPauseButtons from './PlayerPlayPauseButtons/PlayerPlayPauseButt
 import PlayerTimeSlider from './PlayerTimeSlider/PlayerTimeSlider';
 import PlayerVolumeSlider from './PlayerVolumeSlider/PlayerVolumeSlider';
 import MusicPlayerMenu from '../MusicPlayerMenu/MusicPlayerMenu';
+import NoAudioFile from '../NoAudioFile';
 
 const MusicPlayer = () => {
   const location = useLocation();
@@ -28,7 +29,7 @@ const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   if (!selectedFile) {
-    return <div>No audio file selected.</div>;
+    return <NoAudioFile bgImage={bgImage} />;
   }
 
   return (
