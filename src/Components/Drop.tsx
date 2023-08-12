@@ -4,19 +4,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedFile } from '../redux/Slices/dropSlice';
 import { RootState } from '../redux/store';
+import InvalidFileFormat from './InvalidFileFormat';
 
 const Drop = () => {
   const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [invalidFileFormat, setInvalidFileFormat] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const selectedFile = useSelector(
     (state: RootState) => state.drop.selectedFile
   );
 
+  const handleCloseInvalidFileFormat = () => {
+    setInvalidFileFormat(false);
+  };
+
   const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragging(true);
+    setInvalidFileFormat(false);
   };
 
   const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
@@ -38,7 +45,7 @@ const Drop = () => {
           state: { selectedFile: file },
         });
       } else {
-        console.log('Invalid file format. Only MP3 files are allowed.');
+        setInvalidFileFormat(true);
       }
     }
   };
@@ -102,9 +109,7 @@ const Drop = () => {
                       state: { selectedFile: file },
                     });
                   } else {
-                    console.log(
-                      'Invalid file format. Only MP3 files are allowed.'
-                    );
+                    setInvalidFileFormat(true);
                   }
                 }
               }}
@@ -112,6 +117,9 @@ const Drop = () => {
           </span>
         </label>
       </div>
+      {invalidFileFormat && (
+        <InvalidFileFormat onClose={handleCloseInvalidFileFormat} />
+      )}
       <div className="text-white absolute right-0 bottom-0 mr-11 mb-2">
         <a
           href="https://github.com/wlr1"
