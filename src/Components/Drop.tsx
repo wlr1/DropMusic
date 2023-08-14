@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedFile } from '../redux/Slices/dropSlice';
 import { RootState } from '../redux/store';
-import InvalidFileFormat from './InvalidFileFormat';
+import InvalidFileFormatMP3 from './InvalidFileFormatMP3';
 
 const Drop = () => {
   const navigate = useNavigate();
@@ -118,7 +118,7 @@ const Drop = () => {
         </label>
       </div>
       {invalidFileFormat && (
-        <InvalidFileFormat onClose={handleCloseInvalidFileFormat} />
+        <InvalidFileFormatMP3 onClose={handleCloseInvalidFileFormat} />
       )}
       <div className="text-white absolute right-0 bottom-0 mr-11 mb-2">
         <a

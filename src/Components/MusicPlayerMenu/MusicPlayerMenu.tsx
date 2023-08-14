@@ -30,10 +30,10 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mouseup', handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mouseup', handleClickOutside);
     };
   }, []);
 
@@ -51,7 +51,7 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
       </button>
       <div
         ref={menuRef}
-        className={`absolute bg-black bg-opacity-30 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl  w-[455px] h-[711px] right-44 mt-12 animate-slide-up-menu ${
+        className={`absolute bg-black bg-opacity-30  backdrop-filter backdrop-blur-xl  rounded-lg shadow-lg  w-[455px] h-[711px] right-44 mt-14 animate-slide-up-menu ${
           isOpen ? 'menu-open' : 'menu-closed'
         }`}
       >
