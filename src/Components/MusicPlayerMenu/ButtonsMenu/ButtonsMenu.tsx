@@ -19,17 +19,17 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({ setBgImage }) => {
   };
 
   return (
-    <div className="flex justify-between absolute bottom-0  space-x-2 ml-6">
+    <div className="flex w-[111px] absolute bottom-0  space-x-2 ml-6">
       <Link to="/">
-        <button className="border flex flex-row-reverse w-[240px] border-neutral-600 px-14 py-4 mb-4 rounded-2xl   hover:bg-gray-700 ">
-          <span className="text-white">Choose track</span>
+        <button className="border flex flex-row-reverse  border-neutral-600 px-14 py-4 mb-4 rounded-2xl   hover:bg-gray-700 ">
+          <span className="text-white text-sm">Choose track</span>
           <MdOutlineUpload size={22} className="text-gray-400  mr-3 mt-auto" />
         </button>
       </Link>
 
       <div className="  ">
-        <label className="cursor-pointer border flex border-neutral-600 px-14 py-4 mb-4 w-[240px] rounded-2xl  hover:bg-gray-700 ">
-          <span className="text-white">
+        <label className="cursor-pointer border flex border-neutral-600 px-14 py-4 mb-4 w-[210px] rounded-2xl  hover:bg-gray-700 ">
+          <span className="text-white text-sm">
             Choose bg image
             <input
               type="file"

@@ -18,7 +18,9 @@ const InvalidFileFormat: React.FC<InvalidFileFormatProps> = ({ onClose }) => {
         </div>
 
         <span className="text-white text-xl">
-          Invalid file format. Only MP3 files are allowed.
+          Invalid file format. Only{' '}
+          <span className="text-blue-400 underline">MP3</span> files are
+          allowed.
         </span>
       </div>
     </div>

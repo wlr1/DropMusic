@@ -26,15 +26,15 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
   };
 
   return (
-    <div className="absolute right-0 ">
+    <div className="absolute right-0  ">
       <button
-        className=" text-white font-semibold px-4 py-2 my-2 mx-2 rounded-lg button-scale"
+        className="text-white p-4 m-2 button-scale"
         onClick={toggleDropMenu}
       >
         <VscSettings size={33} />
       </button>
       <div
-        className={`absolute  right-0 z-10 mt-2 w-[554px] h-[466px] bg-black bg-opacity-30 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl ${
+        className={`absolute bg-black bg-opacity-30 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl  w-[455px] h-[711px] right-44 mt-12 animate-slide-up-menu ${
           isOpen ? 'menu-open' : 'menu-closed'
         }`}
       >
