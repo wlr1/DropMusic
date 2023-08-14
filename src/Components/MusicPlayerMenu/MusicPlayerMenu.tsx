@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { VscSettings } from 'react-icons/vsc';
 import ButtonsMenu from './ButtonsMenu/ButtonsMenu';
 import BlurSliderMenu from './BlurSliderMenu/BlurSliderMenu';
@@ -19,7 +19,23 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
   titleSpeed,
   setTitleSpeed,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  //click outside of menu closes menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const toggleDropMenu = () => {
     setIsOpen(!isOpen);
@@ -34,6 +50,7 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
         <VscSettings size={33} />
       </button>
       <div
+        ref={menuRef}
         className={`absolute bg-black bg-opacity-30 backdrop-filter backdrop-blur-xl border border-neutral-700 rounded-lg shadow-2xl  w-[455px] h-[711px] right-44 mt-12 animate-slide-up-menu ${
           isOpen ? 'menu-open' : 'menu-closed'
         }`}

@@ -11,7 +11,7 @@ const TitleSpeedMenu: React.FC<TitleSpeedMenuProps> = ({
 }) => {
   return (
     <div className="flex mt-6">
-      <h2 className="text-white text-sm mr-6 ml-3">Title speed: </h2>
+      <h2 className="text-white text-sm mr-6 ml-3 mt-[2px]">Title speed: </h2>
       <div className="space-x-2 text-white  ">
         <span className="text-sm">0s</span>
         <input
