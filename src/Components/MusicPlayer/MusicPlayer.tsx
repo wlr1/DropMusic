@@ -51,6 +51,7 @@ const MusicPlayer = () => {
           setBlurOpacity={setBlurOpacity}
           titleSpeed={titleSpeed}
           setTitleSpeed={setTitleSpeed}
+          audioRef={audioRef}
         />
         <BackButton />
       </div>
