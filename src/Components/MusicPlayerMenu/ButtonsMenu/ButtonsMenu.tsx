@@ -21,49 +21,29 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({ setBgImage }) => {
         const imageUrl = URL.createObjectURL(file);
         setBgImage(`url(${imageUrl})`);
       } else {
-        console.log('Invalid file format. Please select an image.');
         setInvalidFileFormat(true);
       }
     }
   };
 
   return (
-    <div className="flex w-[111px] bottom-0  space-x-2 ml-6">
+    <div className="flex items-center justify-center space-x-6  mt-auto mb-5 ">
       {isInvalidFileFormat && (
         <InvalidFileFormatBG onClose={handleCloseInvalidFileFormat} />
       )}
-      <Link to="/">
-        <button className="absolute bottom-0 right-0 border flex flex-row-reverse h-[75px] border-neutral-600 px-14 py-4 mb-4 rounded-2xl   hover:bg-gray-700 ">
-          <span className="text-white text-sm">Choose track</span>
-          <MdOutlineUpload size={22} className="text-gray-400  mr-3 mt-auto" />
-        </button>
+      <Link to="/" className="text-white text-sm">
+        Choose Track
       </Link>
-
-      <div className=" absolute bottom-0 left-0">
-        <label className="cursor-pointer border flex border-neutral-600 px-14 py-4 mb-4 w-[210px] rounded-2xl  hover:bg-gray-700 ">
-          <span className="text-white text-sm ">
-            Choose bg image
-            <input
-              type="file"
-              id="fileInput"
-              onChange={handleImageChange}
-              accept="image/"
-              className="hidden"
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                width: '100%',
-                height: '100%',
-                opacity: 0,
-                zIndex: 1,
-                cursor: 'pointer',
-                borderRadius: '9999px',
-              }}
-            />
-          </span>
-        </label>
-      </div>
+      <label className="cursor-pointer text-white text-sm relative">
+        Choose Background Image
+        <input
+          type="file"
+          id="fileInput"
+          onChange={handleImageChange}
+          accept="image/"
+          className="hidden"
+        />
+      </label>
     </div>
   );
 };

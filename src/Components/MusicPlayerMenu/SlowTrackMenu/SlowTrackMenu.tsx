@@ -23,7 +23,7 @@ const SlowTrackMenu: React.FC<SlowTrackProps> = ({ audioRef }) => {
     <div className="flex mt-6">
       <h2 className="text-white text-sm mr-6 ml-3 mt-[2px]">Track speed: </h2>
       <div className="space-x-2 text-white  ">
-        <span className="text-sm">0%</span>
+        <span className="text-sm">0.5x</span>
         <input
           type="range"
           className="w-52 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
@@ -32,7 +32,7 @@ const SlowTrackMenu: React.FC<SlowTrackProps> = ({ audioRef }) => {
           value={playbackSpeed.toString()}
           onChange={handlePlaybackSpeedChange}
         />
-        <span className="text-sm">100%</span>
+        <span className="text-sm">2.5x</span>
       </div>
     </div>
   );

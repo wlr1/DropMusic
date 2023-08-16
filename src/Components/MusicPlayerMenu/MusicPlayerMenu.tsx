@@ -54,7 +54,7 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
       </button>
       <div
         ref={menuRef}
-        className={`absolute bg-black bg-opacity-30  backdrop-filter backdrop-blur-xl  rounded-lg shadow-lg  w-[455px] h-[711px] right-44 mt-14 animate-slide-up-menu ${
+        className={` flex flex-col absolute bg-black bg-opacity-30  backdrop-filter backdrop-blur-xl  rounded-lg shadow-lg  w-[455px] h-[700px] right-44 mt-14 animate-slide-up-menu ${
           isOpen ? 'menu-open' : 'menu-closed'
         }`}
       >
