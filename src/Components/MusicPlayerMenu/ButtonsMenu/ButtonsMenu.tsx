@@ -4,15 +4,20 @@ import ChooseTrackMenu from '../ChooseTrackMenu/ChooseTrackMenu';
 
 interface ButtonsMenuProps {
   setBgImage: (image: string) => void; //musicplayermenu repeated props #needfix
+  setPlayerBgImage: (image: string) => void;
 }
 
-const ButtonsMenu: React.FC<ButtonsMenuProps> = ({ setBgImage }) => {
+const ButtonsMenu: React.FC<ButtonsMenuProps> = ({
+  setBgImage,
+  setPlayerBgImage,
+}) => {
   const [isInvalidFileFormat, setInvalidFileFormat] = useState<boolean>(false);
 
   const handleCloseInvalidFileFormat = () => {
     setInvalidFileFormat(false);
   };
 
+  //Bg Image
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -21,6 +26,21 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({ setBgImage }) => {
         setBgImage(`url(${imageUrl})`);
       } else {
         setInvalidFileFormat(true);
+      }
+    }
+  };
+
+  //player Bg image
+  const handlePlayerImageChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.type.startsWith('image/')) {
+        const imageUrl = URL.createObjectURL(file);
+        setPlayerBgImage(imageUrl);
+      } else {
+        console.log('govno');
       }
     }
   };
@@ -43,7 +63,13 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({ setBgImage }) => {
       </label>
       <label className="cursor-pointer text-white text-sm relative transition-all duration-500 hover:text-gray-400">
         Change Player BG
-        <input type="file" id="fileInput" accept="image/" className="hidden" />
+        <input
+          type="file"
+          id="fileInput"
+          accept="image/"
+          className="hidden"
+          onChange={handlePlayerImageChange}
+        />
       </label>
     </div>
   );

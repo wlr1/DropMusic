@@ -15,8 +15,14 @@ const MusicPlayer = () => {
   const location = useLocation();
   const selectedFile = location.state?.selectedFile || null;
 
+  //app bg
   const [bgImage, setBgImage] = useState<string>(
     `url(https://www.pixelstalk.net/wp-content/uploads/images6/Dark-Aesthetic-Wallpaper-HD-City-Night.jpg)`
+  );
+
+  //player bg
+  const [playerBgImage, setPlayerBgImage] = useState<string>(
+    `https://i.pinimg.com/564x/e6/0a/d1/e60ad18063b91edc1a780a3f6e66b6e8.jpg`
   );
 
   //track title speed func for musicplayermenu
@@ -47,6 +53,7 @@ const MusicPlayer = () => {
       >
         <MusicPlayerMenu
           setBgImage={setBgImage}
+          setPlayerBgImage={setPlayerBgImage}
           blurOpacity={blurOpacity}
           setBlurOpacity={setBlurOpacity}
           titleSpeed={titleSpeed}
@@ -58,7 +65,7 @@ const MusicPlayer = () => {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-30  backdrop-blur-lg p-8 rounded-lg shadow-lg">
         {/*Music Player Image*/}
 
-        <PlayerImage />
+        <PlayerImage playerBgImage={playerBgImage} />
         {/* Track Title */}
 
         <PlayerTrackTitle selectedFile={selectedFile} titleSpeed={titleSpeed} />

@@ -6,6 +6,7 @@ import TitleSpeedMenu from './TitleSpeedMenu/TitleSpeedMenu';
 import SlowTrackMenu from './SlowTrackMenu/SlowTrackMenu';
 
 interface MusicPlayerMenuProps {
+  setPlayerBgImage: (image: string) => void;
   setBgImage: (image: string) => void;
   blurOpacity: number;
   setBlurOpacity: (opacity: number) => void;
@@ -16,6 +17,7 @@ interface MusicPlayerMenuProps {
 
 const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
   setBgImage,
+  setPlayerBgImage,
   blurOpacity,
   setBlurOpacity,
   titleSpeed,
@@ -64,7 +66,10 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
         />
         <TitleSpeedMenu titleSpeed={titleSpeed} setTitleSpeed={setTitleSpeed} />
         <SlowTrackMenu audioRef={audioRef} />
-        <ButtonsMenu setBgImage={setBgImage} />
+        <ButtonsMenu
+          setBgImage={setBgImage}
+          setPlayerBgImage={setPlayerBgImage}
+        />
       </div>
     </div>
   );
