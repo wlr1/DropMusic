@@ -40,7 +40,7 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({
         const imageUrl = URL.createObjectURL(file);
         setPlayerBgImage(imageUrl);
       } else {
-        console.log('govno');
+        setInvalidFileFormat(true);
       }
     }
   };
@@ -61,6 +61,7 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({
           className="hidden"
         />
       </label>
+
       <label className="cursor-pointer text-white text-sm relative transition-all duration-500 hover:text-gray-400">
         Change Player BG
         <input
