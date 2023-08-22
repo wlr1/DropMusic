@@ -1,8 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { BsCheck } from 'react-icons/bs';
 
 const RainSoundMenu = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const rainSoundRef = useRef<HTMLAudioElement | null>(null);
+  const [volume, setVolume] = useState<number>(50);
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseInt(e.target.value);
+    setVolume(newVolume);
+    if (rainSoundRef.current) {
+      rainSoundRef.current.volume = newVolume / 100;
+    }
+  };
+
+  const handleCanPlayThrough = () => {
+    if (isChecked && rainSoundRef.current) {
+      rainSoundRef.current.play().catch((error) => {
+        console.error('Error playing rain sound:', error);
+      });
+    }
+  };
+
+  const handlePause = () => {
+    if (rainSoundRef.current) {
+      rainSoundRef.current.pause();
+      rainSoundRef.current.currentTime = 0;
+    }
+  };
+
   return (
     <>
       <div className="inline-flex border-t-2 border-neutral-500 mt-6 ">
@@ -16,7 +46,7 @@ const RainSoundMenu = () => {
             type="checkbox"
             className="hidden "
             checked={isChecked}
-            onChange={() => setIsChecked(!isChecked)}
+            onChange={handleCheckboxChange}
           />
           <span className="relative inline-block w-4 h-4 border border-gray-300 rounded-md bg-white">
             {isChecked && (
@@ -39,11 +69,21 @@ const RainSoundMenu = () => {
             className="w-52 h-2 appearance-none bg-white bg-opacity-50 rounded-lg outline-none cursor-pointer hover:bg-opacity-70 active:bg-opacity-80 transition-opacity"
             min="0"
             max="100"
-            value={50}
-            readOnly
+            value={volume.toString()}
+            onChange={handleVolumeChange}
           />
           <span className="text-sm">100%</span>
         </div>
+        {/* Rain sound video */}
+        <audio
+          ref={rainSoundRef}
+          hidden
+          onCanPlayThrough={handleCanPlayThrough}
+          onEnded={handlePause}
+          preload="auto"
+        >
+          <source src="/DropMusic/public/rainSound.mp3" type="audio/mpeg" />
+        </audio>
       </div>
     </>
   );
