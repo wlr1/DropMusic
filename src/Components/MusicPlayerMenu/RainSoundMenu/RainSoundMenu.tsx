@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BsCheck } from 'react-icons/bs';
 
 const RainSoundMenu = () => {
@@ -6,8 +6,30 @@ const RainSoundMenu = () => {
   const rainSoundRef = useRef<HTMLAudioElement | null>(null);
   const [volume, setVolume] = useState<number>(50);
 
+  //repeat sound
+  const handleRepeatRain = () => {
+    if (rainSoundRef.current) {
+      rainSoundRef.current.loop = true;
+    }
+  };
+
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+
+    if (rainSoundRef.current) {
+      if (isChecked) {
+        // If the checkbox was unchecked, pause and reset playback
+        rainSoundRef.current.pause();
+        rainSoundRef.current.currentTime = 0;
+        rainSoundRef.current.loop = false;
+      } else {
+        // If the checkbox was checked, play the rain sound
+        rainSoundRef.current.play().catch((error) => {
+          console.error('Error playing rain sound:', error);
+        });
+        handleRepeatRain();
+      }
+    }
   };
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,21 +40,6 @@ const RainSoundMenu = () => {
     }
   };
 
-  const handleCanPlayThrough = () => {
-    if (isChecked && rainSoundRef.current) {
-      rainSoundRef.current.play().catch((error) => {
-        console.error('Error playing rain sound:', error);
-      });
-    }
-  };
-
-  const handlePause = () => {
-    if (rainSoundRef.current) {
-      rainSoundRef.current.pause();
-      rainSoundRef.current.currentTime = 0;
-    }
-  };
-
   return (
     <>
       <div className="inline-flex border-t-2 border-neutral-500 mt-6 ">
@@ -40,7 +47,7 @@ const RainSoundMenu = () => {
       </div>
 
       <div>
-        <span className="ml-3 text-sm text-white mr-11">Rain Sound</span>
+        <span className="ml-3 text-sm text-white mr-8">Rain Sound</span>
         <label className=" cursor-pointer">
           <input
             type="checkbox"
@@ -74,17 +81,11 @@ const RainSoundMenu = () => {
           />
           <span className="text-sm">100%</span>
         </div>
-        {/* Rain sound video */}
-        <audio
-          ref={rainSoundRef}
-          hidden
-          onCanPlayThrough={handleCanPlayThrough}
-          onEnded={handlePause}
-          preload="auto"
-        >
-          <source src="/DropMusic/public/rainSound.mp3" type="audio/mpeg" />
-        </audio>
       </div>
+      {/* Rain sound */}
+      <audio ref={rainSoundRef} hidden preload="auto">
+        <source src="../../../../public/rainSound.mp3" type="audio/mpeg" />
+      </audio>
     </>
   );
 };
