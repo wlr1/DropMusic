@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TiMediaPause } from 'react-icons/ti';
 import { IoPlay } from 'react-icons/io5';
 import { RootState } from '../../../redux/store';
-import { togglePlayPause } from '../../../redux/Slices/PlayerSlice';
+import { togglePlayPause } from '../../../redux/Slices/playerSlice';
 
 interface PlayPauseButtonProps {
   audioRef: React.RefObject<HTMLAudioElement>;

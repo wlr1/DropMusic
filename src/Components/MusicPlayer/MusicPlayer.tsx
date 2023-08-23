@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import PlayerImage from './PlayerImage/PlayerImage';
-import BackButton from '../BackButton';
 import PlayerRepeatButton from './PlayerRepeatButton/PlayerRepeatButton';
 import PlayerTrackTitle from './PlayerTrackTitle/PlayerTrackTitle';
 import PlayerPlayPauseButtons from './PlayerPlayPauseButtons/PlayerPlayPauseButtons';
@@ -60,7 +59,6 @@ const MusicPlayer = () => {
           setTitleSpeed={setTitleSpeed}
           audioRef={audioRef}
         />
-        <BackButton />
       </div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-30  backdrop-blur-lg p-8 rounded-lg shadow-lg">
         {/*Music Player Image*/}

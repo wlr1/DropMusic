@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { PiRepeatLight, PiRepeatOnceLight } from 'react-icons/pi';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
-import { setRepeatMode } from '../../../redux/Slices/PlayerSlice';
+import { setRepeatMode } from '../../../redux/Slices/playerSlice';
 
 interface RepeatButtonProps {
   audioRef: React.RefObject<HTMLAudioElement>;

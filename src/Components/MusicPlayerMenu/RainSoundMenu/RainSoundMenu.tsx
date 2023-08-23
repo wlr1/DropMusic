@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { BsCheck } from 'react-icons/bs';
 
 const RainSoundMenu = () => {
@@ -84,7 +84,7 @@ const RainSoundMenu = () => {
       </div>
       {/* Rain sound */}
       <audio ref={rainSoundRef} hidden preload="auto">
-        <source src="../../../../public/rainSound.mp3" type="audio/mpeg" />
+        <source src="/rainSound.mp3" type="audio/mpeg" />
       </audio>
     </>
   );

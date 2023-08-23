@@ -1,5 +1,4 @@
 import React from 'react';
-import { BiChevronLeft } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 interface NoAudioFileProps {
@@ -22,7 +21,7 @@ const NoAudioFile: React.FC<NoAudioFileProps> = ({ bgImage }) => {
             <span className="text-white">No audio file selected.</span>
           </div>
           <div className="flex transform hover:scale-105 transition-all">
-            <Link to="/">
+            <Link to="/DropMusic">
               <span className="underline ">Go to the main page</span>
             </Link>
           </div>

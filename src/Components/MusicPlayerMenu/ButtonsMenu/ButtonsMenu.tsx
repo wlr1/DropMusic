@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import InvalidFileFormatBG from '../../InvalidFileFormatBG';
-import ChooseTrackMenu from '../ChooseTrackMenu/ChooseTrackMenu';
+import { Link } from 'react-router-dom';
 
 interface ButtonsMenuProps {
   setBgImage: (image: string) => void; //musicplayermenu repeated props #needfix
@@ -46,12 +46,14 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-center space-x-6  mt-auto mb-5 ">
+    <div className="flex items-center justify-center space-x-6  mt-auto mb-5 border-t-2 border-neutral-500">
       {isInvalidFileFormat && (
         <InvalidFileFormatBG onClose={handleCloseInvalidFileFormat} />
       )}
-      <ChooseTrackMenu />
-      <label className="cursor-pointer text-white text-sm relative transition-all duration-500 hover:text-gray-400">
+      <label className="mt-6 text-white text-sm transition-all duration-500 hover:text-gray-400">
+        <Link to="/DropMusic">Choose Track</Link>
+      </label>
+      <label className="cursor-pointer text-white text-sm relative transition-all duration-500 hover:text-gray-400 mt-6">
         Change Background Image
         <input
           type="file"
@@ -62,7 +64,7 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({
         />
       </label>
 
-      <label className="cursor-pointer text-white text-sm relative transition-all duration-500 hover:text-gray-400">
+      <label className="cursor-pointer text-white text-sm relative transition-all duration-500 hover:text-gray-400 mt-6">
         Change Player BG
         <input
           type="file"

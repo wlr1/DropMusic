@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import playerReducer from './Slices/PlayerSlice';
+import playerReducer from './Slices/playerSlice';
 import dropReducer from './Slices/dropSlice';
 
 const store = configureStore({

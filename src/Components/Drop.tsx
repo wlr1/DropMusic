@@ -1,9 +1,9 @@
 import { BsCloudUpload } from 'react-icons/bs';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedFile } from '../redux/Slices/dropSlice';
-import { RootState } from '../redux/store';
+// import { RootState } from '../redux/store';
 import InvalidFileFormatMP3 from './InvalidFileFormatMP3';
 
 const Drop = () => {
@@ -12,9 +12,9 @@ const Drop = () => {
   const [invalidFileFormat, setInvalidFileFormat] = useState<boolean>(false);
 
   const dispatch = useDispatch();
-  const selectedFile = useSelector(
-    (state: RootState) => state.drop.selectedFile
-  );
+  // const selectedFile = useSelector(
+  //   (state: RootState) => state.drop.selectedFile
+  // );
 
   const handleCloseInvalidFileFormat = () => {
     setInvalidFileFormat(false);
@@ -41,7 +41,7 @@ const Drop = () => {
       if (file.type === 'audio/mpeg' || file.type === 'audio/mp3') {
         console.log('File:', file);
         dispatch(setSelectedFile(file));
-        navigate('/music-player', {
+        navigate('/DropMusic/music-player', {
           state: { selectedFile: file },
         });
       } else {
@@ -105,7 +105,7 @@ const Drop = () => {
                   if (file.type === 'audio/mpeg' || file.type === 'audio/mp3') {
                     console.log('File:', file);
                     dispatch(setSelectedFile(file));
-                    navigate('/music-player', {
+                    navigate('/DropMusic/music-player', {
                       state: { selectedFile: file },
                     });
                   } else {
