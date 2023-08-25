@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedFile } from '../redux/Slices/dropSlice';
-// import { RootState } from '../redux/store';
 import InvalidFileFormatMP3 from './InvalidFileFormatMP3';
 
 const Drop = () => {
@@ -12,9 +11,6 @@ const Drop = () => {
   const [invalidFileFormat, setInvalidFileFormat] = useState<boolean>(false);
 
   const dispatch = useDispatch();
-  // const selectedFile = useSelector(
-  //   (state: RootState) => state.drop.selectedFile
-  // );
 
   const handleCloseInvalidFileFormat = () => {
     setInvalidFileFormat(false);
