@@ -5,6 +5,7 @@ import BlurSliderMenu from './BlurSliderMenu/BlurSliderMenu';
 import TitleSpeedMenu from './TitleSpeedMenu/TitleSpeedMenu';
 import SlowTrackMenu from './SlowTrackMenu/SlowTrackMenu';
 import RainSoundMenu from './RainSoundMenu/RainSoundMenu';
+import AudioVisualMenu from './AudioVisualMenu/AudioVisualMenu';
 
 interface MusicPlayerMenuProps {
   setPlayerBgImage: (image: string) => void;
@@ -68,6 +69,7 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
         <TitleSpeedMenu titleSpeed={titleSpeed} setTitleSpeed={setTitleSpeed} />
         <SlowTrackMenu audioRef={audioRef} />
         <RainSoundMenu />
+        <AudioVisualMenu />
         <ButtonsMenu
           setBgImage={setBgImage}
           setPlayerBgImage={setPlayerBgImage}
