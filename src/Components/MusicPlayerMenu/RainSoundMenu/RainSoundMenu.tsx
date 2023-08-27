@@ -59,13 +59,13 @@ const RainSoundMenu = () => {
             <div className="block bg-gray-400 w-8 h-4 rounded-full"></div>
             <div
               className={`dot absolute top-[0.2px] ${
-                isChecked ? 'right-0.5 bg-green-400' : 'left-0.5 bg-gray-500'
+                isChecked ? 'right-0.5 bg-blue-500' : 'left-0.5 bg-gray-500'
               } w-4 h-4 rounded-full transition-all duration-300 transform`}
             ></div>
           </div>
         </label>
         <span
-          className={`ml-2 text-${isChecked ? 'green' : 'gray'}-400 text-xs`}
+          className={`ml-2 text-${isChecked ? 'blue' : 'gray'}-400 text-xs`}
         >
           {isChecked ? 'On' : 'Off'}
         </span>

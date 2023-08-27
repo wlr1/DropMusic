@@ -1,6 +1,5 @@
 import AudioReverb from './AudioReverb/AudioReverb';
 import SlowTrackMenu from './SlowTrackMenu/SlowTrackMenu';
-import { useState } from 'react';
 
 interface AudioEffectsProps {
   audioRef: React.RefObject<HTMLAudioElement | null>;

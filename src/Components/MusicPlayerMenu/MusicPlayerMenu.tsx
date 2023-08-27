@@ -3,7 +3,6 @@ import { VscSettings } from 'react-icons/vsc';
 import ButtonsMenu from './ButtonsMenu/ButtonsMenu';
 import BlurSliderMenu from './BlurSliderMenu/BlurSliderMenu';
 import TitleSpeedMenu from './TitleSpeedMenu/TitleSpeedMenu';
-import SlowTrackMenu from './AudioEffects/SlowTrackMenu/SlowTrackMenu';
 import RainSoundMenu from './RainSoundMenu/RainSoundMenu';
 import AudioVisualMenu from './AudioVisualMenu/AudioVisualMenu';
 import AudioEffects from './AudioEffects/AudioEffects';

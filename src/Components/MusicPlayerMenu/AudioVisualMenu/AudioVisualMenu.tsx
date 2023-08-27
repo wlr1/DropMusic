@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { BsCheck } from 'react-icons/bs';
 
 const AudioVisualMenu = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
