@@ -48,21 +48,27 @@ const RainSoundMenu = () => {
 
       <div>
         <span className="ml-3 text-sm text-white mr-8">Rain Sound</span>
-        <label className=" cursor-pointer">
-          <input
-            type="checkbox"
-            className="hidden "
-            checked={isChecked}
-            onChange={handleCheckboxChange}
-          />
-          <span className="relative inline-block w-4 h-4 border border-gray-300 rounded-md bg-white">
-            {isChecked && (
-              <span className="absolute inset-0 flex items-center justify-center ">
-                <BsCheck size={23} />
-              </span>
-            )}
-          </span>
+        <label className="  inline-block cursor-pointer">
+          <div className="relative">
+            <input
+              type="checkbox"
+              className="sr-only"
+              checked={isChecked}
+              onChange={handleCheckboxChange}
+            />
+            <div className="block bg-gray-400 w-8 h-4 rounded-full"></div>
+            <div
+              className={`dot absolute top-[0.2px] ${
+                isChecked ? 'right-0.5 bg-green-400' : 'left-0.5 bg-gray-500'
+              } w-4 h-4 rounded-full transition-all duration-300 transform`}
+            ></div>
+          </div>
         </label>
+        <span
+          className={`ml-2 text-${isChecked ? 'green' : 'gray'}-400 text-xs`}
+        >
+          {isChecked ? 'On' : 'Off'}
+        </span>
       </div>
 
       {/* volume slider */}

@@ -1,28 +1,26 @@
 import { useState } from 'react';
-import { BsCheck } from 'react-icons/bs';
 
-const AudioVisualMenu = () => {
+interface AudioReverbProps {
+  audioRef: React.RefObject<HTMLAudioElement | null>;
+}
+
+const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
-  const onHandleCheckBox = () => {
+  const handleToggle = () => {
     setIsChecked(!isChecked);
   };
-
   return (
     <>
-      <div className="inline-flex border-t-2 border-neutral-500 mt-6 ">
-        <h2 className=" m-auto text-white py-2 ">Audio Visualization</h2>
-      </div>
-
-      <div className="mt-5">
-        <span className="ml-3 text-sm text-white mr-8">Audio Waveform</span>
+      <div className="mt-3">
+        <span className="ml-3 text-sm text-white mr-8">Audio Reverb</span>
         <label className="  inline-block cursor-pointer">
           <div className="relative">
             <input
               type="checkbox"
               className="sr-only"
               checked={isChecked}
-              onChange={onHandleCheckBox}
+              onChange={handleToggle}
             />
             <div className="block bg-gray-400 w-8 h-4 rounded-full"></div>
             <div
@@ -42,4 +40,4 @@ const AudioVisualMenu = () => {
   );
 };
 
-export default AudioVisualMenu;
+export default AudioReverb;

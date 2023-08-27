@@ -3,9 +3,10 @@ import { VscSettings } from 'react-icons/vsc';
 import ButtonsMenu from './ButtonsMenu/ButtonsMenu';
 import BlurSliderMenu from './BlurSliderMenu/BlurSliderMenu';
 import TitleSpeedMenu from './TitleSpeedMenu/TitleSpeedMenu';
-import SlowTrackMenu from './SlowTrackMenu/SlowTrackMenu';
+import SlowTrackMenu from './AudioEffects/SlowTrackMenu/SlowTrackMenu';
 import RainSoundMenu from './RainSoundMenu/RainSoundMenu';
 import AudioVisualMenu from './AudioVisualMenu/AudioVisualMenu';
+import AudioEffects from './AudioEffects/AudioEffects';
 
 interface MusicPlayerMenuProps {
   setPlayerBgImage: (image: string) => void;
@@ -67,8 +68,8 @@ const MusicPlayerMenu: React.FC<MusicPlayerMenuProps> = ({
           setBlurOpacity={setBlurOpacity}
         />
         <TitleSpeedMenu titleSpeed={titleSpeed} setTitleSpeed={setTitleSpeed} />
-        <SlowTrackMenu audioRef={audioRef} />
         <RainSoundMenu />
+        <AudioEffects audioRef={audioRef} />
         <AudioVisualMenu />
         <ButtonsMenu
           setBgImage={setBgImage}
