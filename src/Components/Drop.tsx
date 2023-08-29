@@ -1,5 +1,5 @@
 import { BsCloudUpload } from 'react-icons/bs';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSelectedFile } from '../redux/Slices/dropSlice';
@@ -12,6 +12,7 @@ const Drop = () => {
 
   const dispatch = useDispatch();
 
+  //error handling
   const handleCloseInvalidFileFormat = () => {
     setInvalidFileFormat(false);
   };
@@ -45,6 +46,17 @@ const Drop = () => {
       }
     }
   };
+
+  //auto close error popup
+  useEffect(() => {
+    if (invalidFileFormat) {
+      const timer = setTimeout(() => {
+        handleCloseInvalidFileFormat();
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [invalidFileFormat]);
 
   return (
     <div

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InvalidFileFormatBG from '../../InvalidFileFormatBG';
 import { Link } from 'react-router-dom';
 
@@ -44,6 +44,17 @@ const ButtonsMenu: React.FC<ButtonsMenuProps> = ({
       }
     }
   };
+
+  //auto close error popup
+  useEffect(() => {
+    if (isInvalidFileFormat) {
+      const timer = setTimeout(() => {
+        setInvalidFileFormat(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isInvalidFileFormat]);
 
   return (
     <div className="flex items-center justify-center space-x-6  mt-auto mb-5 border-t-2 border-neutral-500">

@@ -7,7 +7,7 @@ interface InvalidFileFormatProps {
 
 const InvalidFileFormat: React.FC<InvalidFileFormatProps> = ({ onClose }) => {
   return (
-    <div className="absolute -top-28 right-16  w-[333px] animate-slide-up ">
+    <div className={`absolute top-0 right-16  w-[333px] animate-slide-up `}>
       <div className="text-center p-8 rounded-lg shadow-lg bg-gray-700 bg-opacity-90 backdrop-blur-md border-2 border-red-500  ">
         <div className="absolute right-1 top-1">
           <IoCloseOutline

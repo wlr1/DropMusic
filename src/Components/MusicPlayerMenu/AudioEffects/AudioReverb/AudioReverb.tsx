@@ -19,7 +19,7 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
     if (isChecked) {
       if (!convolverNode) {
         const newConvolverNode = audioContext.createConvolver();
-        fetch('/DropMusic/src/assets/sounds/space.wav')
+        fetch('/DropMusic/src/assets/impulseResponsiveSounds/space.wav')
           .then((response) => response.arrayBuffer())
           .then((buffer) => audioContext.decodeAudioData(buffer))
           .then((impulseResponseBuffer) => {
@@ -90,6 +90,7 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
         >
           {isChecked ? 'On' : 'Off'}
         </span>
+        <span className="text-red-500 ml-12 text-sm">#needfix</span>
       </div>
     </>
   );
