@@ -1,21 +1,53 @@
 import React, { useState, useEffect } from 'react';
-
+// import * as Tone from 'tone';
+import ReverbList from './ReverbList';
 interface AudioReverbProps {
   audioRef: React.RefObject<HTMLAudioElement | null>;
 }
 
 const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  // const [reverbEffect, setReverbEffect] = useState<Tone.Reverb | null>(null);
+  // const [audioPlayer, setAudioPlayer] = useState<Tone.Player | null>(null);
+
+  // useEffect(() => {
+  //   if (audioRef.current) {
+  //     const player = new Tone.Player(audioRef.current.src).toDestination();
+  //     setAudioPlayer(player);
+  //   }
+  // }, [audioRef]);
+
+  // useEffect(() => {
+  //   if (isChecked && audioPlayer) {
+  //     const reverb = new Tone.Reverb({
+  //       preDelay: 100,
+  //       wet: 1,
+  //       decay: 2.0,
+  //     }).toDestination();
+  //     // Generate the Impulse Response (IR) for the reverb
+  //     reverb.generate().then(() => {
+  //       audioPlayer.connect(reverb);
+  //       setReverbEffect(reverb);
+  //     });
+  //   } else {
+  //     if (reverbEffect && audioPlayer) {
+  //       audioPlayer.disconnect(reverbEffect);
+  //       reverbEffect.dispose();
+  //     }
+  //   }
+  // }, [isChecked, audioPlayer, reverbEffect]);
+
   const [convolverNode, setConvolverNode] = useState<ConvolverNode | null>(
     null
   );
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   const [sourceNode, setSourceNode] =
     useState<MediaElementAudioSourceNode | null>(null);
 
+  const impulseFiles = ['space.wav', 'CUST_hole_room.wav', 'darklong.wav'];
+
   useEffect(() => {
     const audioContext = new window.AudioContext();
-
     if (isChecked) {
       if (!convolverNode) {
         const newConvolverNode = audioContext.createConvolver();
@@ -26,6 +58,9 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
             newConvolverNode.buffer = impulseResponseBuffer;
             setConvolverNode(newConvolverNode);
             if (audioRef.current) {
+              if (sourceNode) {
+                sourceNode.disconnect();
+              }
               const newSourceNode = audioContext.createMediaElementSource(
                 audioRef.current
               );
@@ -52,11 +87,9 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
     return () => {
       if (sourceNode) {
         sourceNode.disconnect();
-        setSourceNode(null);
       }
       if (convolverNode) {
         convolverNode.disconnect();
-        setConvolverNode(null);
       }
     };
   }, [isChecked, audioRef, convolverNode, sourceNode]);
@@ -67,7 +100,8 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
 
   return (
     <>
-      <div className="mt-3">
+      {/* switch button */}
+      <div className="mt-6 flex">
         <span className="ml-3 text-sm text-white mr-8">Audio Reverb</span>
         <label className="  inline-block cursor-pointer">
           <div className="relative">
@@ -90,7 +124,11 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
         >
           {isChecked ? 'On' : 'Off'}
         </span>
-        <span className="text-red-500 ml-12 text-sm">#needfix</span>
+        {/* list */}
+
+        <ReverbList impulseFiles={impulseFiles} />
+
+        {/* <span className="text-red-500 ml-12 text-sm">#needfix</span> */}
       </div>
     </>
   );
