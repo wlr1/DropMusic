@@ -43,6 +43,7 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
 
   const [sourceNode, setSourceNode] =
     useState<MediaElementAudioSourceNode | null>(null);
+  const [selectedImpulse, setSelectedImpulse] = useState<string | null>(null);
 
   const impulseFiles = ['space.wav', 'CUST_hole_room.wav', 'darklong.wav'];
 
@@ -51,7 +52,9 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
     if (isChecked) {
       if (!convolverNode) {
         const newConvolverNode = audioContext.createConvolver();
-        fetch('/DropMusic/src/assets/impulseResponsiveSounds/space.wav')
+        fetch(
+          `/DropMusic/src/assets/impulseResponsiveSounds/${selectedImpulse}`
+        )
           .then((response) => response.arrayBuffer())
           .then((buffer) => audioContext.decodeAudioData(buffer))
           .then((impulseResponseBuffer) => {
@@ -126,7 +129,11 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
         </span>
         {/* list */}
 
-        <ReverbList impulseFiles={impulseFiles} />
+        <ReverbList
+          impulseFiles={impulseFiles}
+          selectedImpulse={selectedImpulse}
+          onSelectedImpulse={setSelectedImpulse}
+        />
 
         {/* <span className="text-red-500 ml-12 text-sm">#needfix</span> */}
       </div>

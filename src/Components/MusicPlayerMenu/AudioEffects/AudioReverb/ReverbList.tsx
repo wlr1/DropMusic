@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
 interface ReverbListProps {
-  // onSelectedImpulse: (selectedImpulse: string) => void;
+  onSelectedImpulse: (selectedImpulse: string) => void;
+  selectedImpulse: string | null;
   impulseFiles: string[];
 }
 
 const ReverbList: React.FC<ReverbListProps> = ({
-  // onSelectedImpulse,
+  onSelectedImpulse,
   impulseFiles,
+  selectedImpulse,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -18,7 +20,7 @@ const ReverbList: React.FC<ReverbListProps> = ({
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
-    // onSelectedImpulse(item);
+    onSelectedImpulse(item);
     setIsOpen(false);
   };
 
@@ -51,7 +53,9 @@ const ReverbList: React.FC<ReverbListProps> = ({
               <li
                 key={index}
                 onClick={() => handleItemClick(item)}
-                className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                className={` ${
+                  item === selectedImpulse ? 'bg-blue-200' : ''
+                } px-4 py-2 cursor-pointer hover:bg-gray-100`}
               >
                 {item}
               </li>
