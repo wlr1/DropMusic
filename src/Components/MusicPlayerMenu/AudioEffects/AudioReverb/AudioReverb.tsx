@@ -1,41 +1,10 @@
 import React, { useState, useEffect } from 'react';
-// import * as Tone from 'tone';
 import ReverbList from './ReverbList';
 interface AudioReverbProps {
   audioRef: React.RefObject<HTMLAudioElement | null>;
 }
 
 const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
-  // const [reverbEffect, setReverbEffect] = useState<Tone.Reverb | null>(null);
-  // const [audioPlayer, setAudioPlayer] = useState<Tone.Player | null>(null);
-
-  // useEffect(() => {
-  //   if (audioRef.current) {
-  //     const player = new Tone.Player(audioRef.current.src).toDestination();
-  //     setAudioPlayer(player);
-  //   }
-  // }, [audioRef]);
-
-  // useEffect(() => {
-  //   if (isChecked && audioPlayer) {
-  //     const reverb = new Tone.Reverb({
-  //       preDelay: 100,
-  //       wet: 1,
-  //       decay: 2.0,
-  //     }).toDestination();
-  //     // Generate the Impulse Response (IR) for the reverb
-  //     reverb.generate().then(() => {
-  //       audioPlayer.connect(reverb);
-  //       setReverbEffect(reverb);
-  //     });
-  //   } else {
-  //     if (reverbEffect && audioPlayer) {
-  //       audioPlayer.disconnect(reverbEffect);
-  //       reverbEffect.dispose();
-  //     }
-  //   }
-  // }, [isChecked, audioPlayer, reverbEffect]);
-
   const [convolverNode, setConvolverNode] = useState<ConvolverNode | null>(
     null
   );
@@ -45,7 +14,14 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
     useState<MediaElementAudioSourceNode | null>(null);
   const [selectedImpulse, setSelectedImpulse] = useState<string | null>(null);
 
-  const impulseFiles = ['space.wav', 'CUST_hole_room.wav', 'darklong.wav'];
+  const impulseFiles = [
+    'space',
+    'CUST_hole_room',
+    'darklong',
+    'Studio',
+    'Back Room',
+    'Clear Ambience',
+  ];
 
   useEffect(() => {
     const audioContext = new window.AudioContext();
@@ -53,7 +29,9 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
       if (!convolverNode) {
         const newConvolverNode = audioContext.createConvolver();
         fetch(
-          `/DropMusic/src/assets/impulseResponsiveSounds/${selectedImpulse}`
+          `/DropMusic/src/assets/impulseResponsiveSounds/${
+            selectedImpulse + '.wav'
+          } `
         )
           .then((response) => response.arrayBuffer())
           .then((buffer) => audioContext.decodeAudioData(buffer))
@@ -134,8 +112,6 @@ const AudioReverb: React.FC<AudioReverbProps> = ({ audioRef }) => {
           selectedImpulse={selectedImpulse}
           onSelectedImpulse={setSelectedImpulse}
         />
-
-        {/* <span className="text-red-500 ml-12 text-sm">#needfix</span> */}
       </div>
     </>
   );

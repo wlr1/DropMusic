@@ -1,3 +1,4 @@
+import AudioDistortion from './AudioDistortion/AudioDistortion';
 import AudioReverb from './AudioReverb/AudioReverb';
 import SlowTrackMenu from './SlowTrackMenu/SlowTrackMenu';
 
@@ -13,6 +14,7 @@ const AudioEffects: React.FC<AudioEffectsProps> = ({ audioRef }) => {
       </div>
       <SlowTrackMenu audioRef={audioRef} />
       <AudioReverb audioRef={audioRef} />
+      <AudioDistortion audioRef={audioRef} />
     </>
   );
 };

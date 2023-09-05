@@ -30,7 +30,7 @@ const ReverbList: React.FC<ReverbListProps> = ({
         onClick={toggleDropdown}
         className="w-full text-left bg-gray-400 px-4 py-[1px] rounded"
       >
-        {selectedItem || 'Select an impulse file'}
+        {selectedItem || 'Select an (IR) file'}
         <svg
           className="w-5 h-5 inline ml-2"
           fill="none"

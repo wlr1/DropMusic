@@ -39,7 +39,7 @@ const MusicPlayer = () => {
 
   return (
     <div
-      className="flex justify-center items-center h-screen "
+      className="flex justify-center items-center h-screen  "
       style={{
         backgroundImage: bgImage,
         backgroundSize: 'cover',
